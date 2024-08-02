@@ -37,6 +37,8 @@ namespace terra
         protected int[][] bridges;          //橋
         protected int bridgeNum = 0;        //橋數量
         protected bool pass = false;        //PASS
+        protected int townNum = 0;          //地區數量
+        protected int castleNum = 0;        //城堡數量
         protected Color color = Color.White; 
         protected int[] occupyingTable = [0, 0, 0, 0, 0, 0, 0]; //鏟地表(0:沙漠/1:雨林/2:沼澤/3:曠野/4:湖泊/5:廢土/6:山區)
         protected int[] priestsBurning = [0, 0, 0, 0];          //燒祭司(0:火/1:水/2:土/3:風)
@@ -621,6 +623,14 @@ namespace terra
         public virtual void ShowMessage()
         {
             
+        }
+        public int ShowTown()
+        {
+            return townNum;
+        }
+        public int ShowCastle()
+        {
+            return castleNum;
         }
         public string ShowInfo()
         {

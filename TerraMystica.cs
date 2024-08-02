@@ -588,11 +588,11 @@ namespace terra
             return near;
 
         }
-        public int[] IsDirectlyNear(Button btnA)
+        private int[] IsDirectlyNear(Button btnA, Character chr)
         {
             string buttonName = btnA.Name.Remove(0, 6);
             int A = Convert.ToInt32(buttonName);
-            int[][] bridges = rounder.ShowBridges();
+            int[][] bridges = chr.ShowBridges();
             int bridgeNum = 0;
             int[] connectArea = [0, 0, 0];
             int[] near;
@@ -1837,8 +1837,14 @@ namespace terra
         #endregion
 
         #region CASTLE
-        public void StoreCastleValue(Button btn, int value)
+        private void StoreCastleValue(Button btn, int value, Character chr)
         {
+            int[] near = IsDirectlyNear(btn, chr);
+            string btnName = "btnMap";
+            for (int i = 0; i < near.Length; i++)
+            {
+                btnName += Convert.ToString(near[i]);
+            }
             if (btn.Tag != null)
             {
                 btn.Tag = value;
